@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAMS.EventReminder.Event
 {
-    class OneTimeEvent : IEvent
+   public class OneTimeEvent : IEvent
     {
         public DateTime Date { get; set; }
         public DateTime NextNotificationDate { get { return Date - NotifyBefore; } }
