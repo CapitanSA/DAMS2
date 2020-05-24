@@ -30,7 +30,7 @@ namespace DAMS.Core.Tests.EventReminder.Event
 
         [Test]
         public void Notify_should_call_INotifier()
-        {   
+        {
             // Arrange
 
             // Act
@@ -57,5 +57,24 @@ namespace DAMS.Core.Tests.EventReminder.Event
             //Assert
             CustomEventTest.Dates[element.Key].Should().Be(EventStatus.Closed);
         }
+
+
+        [Test]
+        public void Updatestatus_should_set_status_success_if_notification_was_failed()
+        {
+            //Arrange
+            var result = new NotificationResult { IsSuccess = false };
+            CustomEventTest.Dates = new Dictionary<DateTime, EventStatus>
+            {
+                {new DateTime(2020,10,16),EventStatus.Active}
+            };
+
+            //Act
+            CustomEventTest.UpdateStatus(result);
+
+            //Assert
+            CustomEventTest.Dates[element.Key].Should().Be(EventStatus.Failed);
+        }
+
     }
 }
