@@ -29,7 +29,7 @@ namespace DAMS.EventReminder
             }
         }
         public string Name { get; set; }
-        public TimeSpan NotifyBefore { get; set; }        
+        public TimeSpan NotifyBefore { get; set; }
         public EventStatus Status { get; set; }
 
 
@@ -57,7 +57,6 @@ namespace DAMS.EventReminder
             // Remove following line after GetNextEventDate() will be implemented.
             //DateTime nextEventDate = Dates.First(d => d.Value == EventStatus.Active).Key;
             DateTime nextEventDate = GetNextEventDate();
-
             var eventInfo = new EventInfo(Name, nextEventDate);
             NotificationResult notificationResult = Notifier.Notify(eventInfo);
             UpdateStatus(notificationResult);
@@ -84,7 +83,14 @@ namespace DAMS.EventReminder
 
         private DateTime GetNextEventDate()
         {
-            throw new NotImplementedException();
+            foreach (KeyValuePair<DateTime, EventStatus> item in Dates)
+            {
+                if (item.Value == EventStatus.Active)
+                {
+                    return item.Key;
+                }
+            }
+            return DateTime.MinValue;
         }
     }
 }
