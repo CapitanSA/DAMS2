@@ -14,7 +14,7 @@ namespace DAMS.EventReminder.Event
         public PeriodType PeriodType { get; set; }
         public DateTime NextNotificationDate { get { return GetNextNotificationDate(); } }
         public string Name { get; set; }
-        public TimeSpan NotifyBefore { get; set; }        
+        public TimeSpan NotifyBefore { get; set; }
         public EventStatus Status { get; set; }
 
 
@@ -60,77 +60,78 @@ namespace DAMS.EventReminder.Event
 
         private DateTime GetNextNotificationDate()
         {
-            DateTime NextDate = Date;
-            if (PeriodType == PeriodType.None)
-            {
-                NextDate = Date - NotifyBefore; ;
-            }
-            if (PeriodType == PeriodType.Daily)
-            {
-                if (NextDate - NotifyBefore > DateTime.Now)
-                {
-                    NextDate = NextDate - NotifyBefore;
-                }
-                else
-                {
-                    while (NextDate - NotifyBefore < DateTime.Now)
-                    {
-                        NextDate = NextDate.AddDays(1);
-                    }
-                    NextDate = NextDate - NotifyBefore;
-                }
-            }
-            if (PeriodType == PeriodType.Weekly)
-            {
-                if (NextDate - NotifyBefore > DateTime.Now)
-                {
-                    NextDate = NextDate - NotifyBefore;
-                }
-                else
-                {
-                    while (NextDate - NotifyBefore < DateTime.Now)
-                    {
-                        NextDate = NextDate.AddDays(7);
-                    }
-                    NextDate = NextDate - NotifyBefore;
-                }
-            }
-            if (PeriodType == PeriodType.Monthly)
-            {
-                if (NextDate - NotifyBefore > DateTime.Now)
-                {
-                    NextDate = NextDate - NotifyBefore;
-                }
-                else
-                {
-                    while (NextDate - NotifyBefore < DateTime.Now)
-                    {
-                        NextDate = NextDate.AddMonths(1);
-                    }
-                    NextDate = NextDate - NotifyBefore;
-                }
-            }
-            if (PeriodType == PeriodType.Yearly)
-            {
-                if (NextDate - NotifyBefore > DateTime.Now)
-                {
-                    NextDate = NextDate - NotifyBefore;
-                }
-                else
-                {
-                    while (NextDate - NotifyBefore < DateTime.Now)
-                    {
-                        NextDate = NextDate.AddYears(1);
-                    }
-                    NextDate = NextDate - NotifyBefore;
-                }
-            }
-            return NextDate;
+            DateTime nextNotificatioDate = GetNextEventDate() - NotifyBefore;
+            return nextNotificatioDate;
         }
 
         private DateTime GetNextEventDate()
         {
-            throw new NotImplementedException();
+            DateTime nextEventDate = Date;
+            if (PeriodType == PeriodType.None)
+            {
+                return nextEventDate;
+            }
+            if (PeriodType == PeriodType.Daily)
+            {
+                if (nextEventDate > DateTime.Now)
+                {
+                    return nextEventDate;
+                }
+                else
+                {
+                    while (nextEventDate < DateTime.Now)
+                    {
+                        nextEventDate.AddDays(1);
+                    }
+                    return nextEventDate;
+                }
+            }
+            if (PeriodType == PeriodType.Weekly)
+            {
+                if (nextEventDate > DateTime.Now)
+                {
+                    return nextEventDate;
+                }
+                else
+                {
+                    while (nextEventDate < DateTime.Now)
+                    {
+                        nextEventDate.AddDays(7);
+                    }
+                    return nextEventDate;
+                }
+            }
+            if (PeriodType == PeriodType.Monthly)
+            {
+                if (nextEventDate > DateTime.Now)
+                {
+                    return nextEventDate;
+                }
+                else
+                {
+                    while (nextEventDate < DateTime.Now)
+                    {
+                        nextEventDate.AddMonths(1);
+                    }
+                    return nextEventDate;
+                }
+            }
+            if (PeriodType == PeriodType.Yearly)
+            {
+                if (nextEventDate > DateTime.Now)
+                {
+                    return nextEventDate;
+                }
+                else
+                {
+                    while (nextEventDate < DateTime.Now)
+                    {
+                        nextEventDate.AddYears(1);
+                    }
+                    return nextEventDate;
+                }
+            }
+            return nextEventDate;
         }
     }
 }
