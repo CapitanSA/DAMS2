@@ -4,6 +4,6 @@ namespace DAMS.EventReminder
 {
     public interface INotifier
     {
-        NotificationResult Notify(EventInfo eventInfo);
+        NotificationResult Notify(NotificationInfo eventInfo);
     }
 }

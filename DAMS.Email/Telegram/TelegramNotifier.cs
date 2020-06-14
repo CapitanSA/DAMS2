@@ -12,7 +12,7 @@ namespace DAMS.NotificationSystems.All.Telegram
             return message;
         }
 
-        public NotificationResult Notify(EventInfo eventInfo)
+        public NotificationResult Notify(NotificationInfo notificationInfo)
         {
             TextMessenger messenger = new TextMessenger();
             NotificationResult result = new NotificationResult();

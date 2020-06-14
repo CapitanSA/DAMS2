@@ -41,7 +41,7 @@ namespace DAMS.EventReminder.Event
         public void Notify()
         {
             var nextEventDate = GetNextEventDate();
-            var eventInfo = new EventInfo(Name, nextEventDate);
+            var eventInfo = new NotificationInfo(Name, nextEventDate);
             var notificationResult = Notifier.Notify(eventInfo);
             UpdateStatus(notificationResult);
         }

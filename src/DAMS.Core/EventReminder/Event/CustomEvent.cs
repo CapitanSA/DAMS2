@@ -58,7 +58,7 @@ namespace DAMS.EventReminder
             //DateTime nextEventDate = Dates.First(d => d.Value == EventStatus.Active).Key;
             DateTime nextEventDate = GetNextEventDate();
 
-            var eventInfo = new EventInfo(Name, nextEventDate);
+            var eventInfo = new NotificationInfo(Name, nextEventDate);
             NotificationResult notificationResult = Notifier.Notify(eventInfo);
             UpdateStatus(notificationResult);
         }

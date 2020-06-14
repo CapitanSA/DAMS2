@@ -2,16 +2,17 @@
 
 namespace DAMS.EventReminder.Notifier
 {
-    public struct EventInfo
+    public class NotificationInfo
     {
         public string EventName { get; }
         public DateTime EventDate { get; }
+        public string EmailRecipient { get; set; }
 
-
-        public EventInfo(string eventName, DateTime eventDate)
+        public NotificationInfo(string eventName, DateTime eventDate, string emailRecipient)
         {
             EventName = eventName;
             EventDate = eventDate;
+            EmailRecipient = emailRecipient;
         }
     }
 }
