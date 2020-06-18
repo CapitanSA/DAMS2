@@ -1,8 +1,11 @@
 ﻿using DAMS.EventReminder.Event;
 using DAMS.EventReminder.Notifier;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 
 namespace DAMS.EventReminder
 {
@@ -12,8 +15,10 @@ namespace DAMS.EventReminder
     public class CustomEvent : IEvent
     {
         private INotifier Notifier;
-
+         
         public IDictionary<DateTime, EventStatus> Dates { get; set; }
+        public int Id { get; set; }
+
         public DateTime NextNotificationDate
         {
             get
@@ -33,6 +38,10 @@ namespace DAMS.EventReminder
         public EventStatus Status { get; set; }
 
 
+        public CustomEvent()
+        {
+                
+        }
         public CustomEvent(INotifier notifier, IEnumerable<DateTime> dates)
         {
             Notifier = notifier;
@@ -58,7 +67,7 @@ namespace DAMS.EventReminder
             //DateTime nextEventDate = Dates.First(d => d.Value == EventStatus.Active).Key;
             DateTime nextEventDate = GetNextEventDate();
 
-            var eventInfo = new NotificationInfo(Name, nextEventDate);
+            var eventInfo = new NotificationInfo(Name, nextEventDate,"");
             NotificationResult notificationResult = Notifier.Notify(eventInfo);
             UpdateStatus(notificationResult);
         }

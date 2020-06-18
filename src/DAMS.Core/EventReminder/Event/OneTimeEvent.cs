@@ -11,8 +11,14 @@ namespace DAMS.EventReminder.Event
         public DateTime NextNotificationDate { get { return Date - NotifyBefore; } }
         public string Name { get; set; }
         public TimeSpan NotifyBefore { get; set; }
+        public int Id { get; set; }
 
         public EventStatus Status { get; set; }
+
+        public OneTimeEvent()
+        {
+                
+        }
 
 
         public OneTimeEvent(INotifier notifier, DateTime date)
@@ -36,7 +42,7 @@ namespace DAMS.EventReminder.Event
 
         public void Notify()
         {
-            var eventInfo = new NotificationInfo(Name, Date);
+            var eventInfo = new NotificationInfo(Name, Date,"");
             NotificationResult notificationResult = Notifier.Notify(eventInfo);
             UpdateStatus(notificationResult);
         }
