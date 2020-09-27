@@ -7,6 +7,10 @@ namespace DAMS.EventReminder.Notifier
         public string EventName { get; }
         public DateTime EventDate { get; }
         public string EmailRecipient { get; set; }
+        public NotificationInfo()
+        {
+                
+        }
 
         public NotificationInfo(string eventName, DateTime eventDate, string emailRecipient)
         {

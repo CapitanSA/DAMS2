@@ -16,6 +16,11 @@ namespace DAMS.EventReminder.Event
         public string Name { get; set; }
         public TimeSpan NotifyBefore { get; set; }        
         public EventStatus Status { get; set; }
+        public int Id { get; set; }
+        public PeriodEvent()
+        {
+                
+        }
 
 
         public PeriodEvent(INotifier notifier, DateTime date, PeriodType period)
@@ -41,7 +46,7 @@ namespace DAMS.EventReminder.Event
         public void Notify()
         {
             var nextEventDate = GetNextEventDate();
-            var eventInfo = new NotificationInfo(Name, nextEventDate);
+            var eventInfo = new NotificationInfo(Name, nextEventDate,"");
             var notificationResult = Notifier.Notify(eventInfo);
             UpdateStatus(notificationResult);
         }
@@ -131,6 +136,10 @@ namespace DAMS.EventReminder.Event
         private DateTime GetNextEventDate()
         {
             throw new NotImplementedException();
+        }
+        public override string ToString()
+        {
+            return "Id:" + Id + "  " + "Name: " + Name + "  " + "Date: " + Date + "  " +"Period Type: "+ PeriodType + "  " + "Status: " + Status;
         }
     }
 }

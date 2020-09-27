@@ -10,7 +10,7 @@ namespace DAMS.EntityFrameworkCore
             )
         {
             /* This is the single point to configure DbContextOptions for DAMSDbContext */
-            dbContextOptions.UseSqlServer(connectionString);
+            dbContextOptions.UseMySQL(connectionString);
         }
     }
 }

@@ -34,12 +34,12 @@ namespace DAMS.Core.Tests.EventReminder.Event
         public void Notify_should_call_INotifier()
         {
             // Arrange
-
+            NotificationInfo notificationInfo = new NotificationInfo();
             // Act
             PeriodEventInstance.Notify();
 
             // Assert
-            _notifier.Received().Notify();  // Here is mock checking
+            _notifier.Received().Notify(notificationInfo);  // Here is mock checking
         }
 
         #endregion

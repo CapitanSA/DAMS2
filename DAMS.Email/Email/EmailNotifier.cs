@@ -64,5 +64,6 @@ namespace DAMS.NotificationSystems.All.Email
             };
             return smtp;
         }
+       
     }
 }

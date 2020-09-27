@@ -33,12 +33,12 @@ namespace DAMS.Core.Tests.EventReminder.Scheduler
         public void PrepareNotificationBucket_should_sort_all_events_and_add_needed_event_in_a_new_bucket()
         {
             // Arrange
-            var eventTest = new OneTimeEvent(_notifier, DateTime.Now.AddMinutes(3).AddSeconds(50)) { Name = "event1", NotifyBefore = new TimeSpan (0,0,0) };
+            var eventTest = new OneTimeEvent( DateTime.Now.AddMinutes(3).AddSeconds(50)) { Name = "event1", NotifyBefore = new TimeSpan (0,0,0) };
             var events = new List<IEvent>()
             {
                eventTest,
-               new OneTimeEvent (_notifier, DateTime.Now.AddMinutes(15).AddSeconds(50)) { Name = "event2", NotifyBefore = new TimeSpan (0,0,0) },
-               new OneTimeEvent (_notifier, DateTime.Now.AddMinutes(3).AddSeconds(50)) { Name = "event3", NotifyBefore = new TimeSpan (0,0,0) },
+               new OneTimeEvent ( DateTime.Now.AddMinutes(15).AddSeconds(50)) { Name = "event2", NotifyBefore = new TimeSpan (0,0,0) },
+               new OneTimeEvent ( DateTime.Now.AddMinutes(3).AddSeconds(50)) { Name = "event3", NotifyBefore = new TimeSpan (0,0,0) },
             };
 
             //Act 
