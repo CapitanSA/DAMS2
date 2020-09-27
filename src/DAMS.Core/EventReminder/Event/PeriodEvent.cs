@@ -51,6 +51,7 @@ namespace DAMS.EventReminder.Event
             UpdateStatus(notificationResult);
         }
 
+
         public void UpdateStatus(NotificationResult result)
         {
             if (result.IsSuccess)
