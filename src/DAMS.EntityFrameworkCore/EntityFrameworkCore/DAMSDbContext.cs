@@ -30,6 +30,7 @@ namespace DAMS.EntityFrameworkCore
                 .Property(b => b.Dates).HasConversion
                 (v => JsonConvert.SerializeObject(v),
                 v => JsonConvert.DeserializeObject<Dictionary<DateTime, EventStatus>>(v));
+
         }
 
 

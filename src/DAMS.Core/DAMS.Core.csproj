@@ -19,7 +19,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.2" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EventReminder\Event\" />
     <Folder Include="Users\" />
   </ItemGroup>
 </Project>

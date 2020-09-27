@@ -1,4 +1,5 @@
-﻿using DAMS.EventReminder.Event;
+﻿using Abp.Json;
+using DAMS.EventReminder.Event;
 using DAMS.EventReminder.Notifier;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -89,6 +90,10 @@ namespace DAMS.EventReminder
                     break;
                 }
             }
+        }
+        public override string ToString()
+        {
+            return "Id:" + Id + "  " + "Name: " + Name + "  " + "Dates: " + Dates.Keys.ToJsonString() ;
         }
 
         private DateTime GetNextEventDate()

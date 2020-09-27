@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAMS.Migrations
 {
     [DbContext(typeof(DAMSDbContext))]
-    [Migration("20200618133340_Firs")]
-    partial class Firs
+    [Migration("20200723155257_tesr")]
+    partial class tesr
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,6 +56,9 @@ namespace DAMS.Migrations
 
                     b.Property<TimeSpan>("NotifyBefore")
                         .HasColumnType("time");
+
+                    b.Property<int>("NotifyStatus")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

@@ -55,6 +55,9 @@ namespace DAMS.Migrations
                     b.Property<TimeSpan>("NotifyBefore")
                         .HasColumnType("time");
 
+                    b.Property<int>("NotifyStatus")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 

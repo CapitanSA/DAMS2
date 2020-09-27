@@ -137,5 +137,9 @@ namespace DAMS.EventReminder.Event
         {
             throw new NotImplementedException();
         }
+        public override string ToString()
+        {
+            return "Id:" + Id + "  " + "Name: " + Name + "  " + "Date: " + Date + "  " +"Period Type: "+ PeriodType + "  " + "Status: " + Status;
+        }
     }
 }
